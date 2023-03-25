@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedule.Maker", "Schedule.Maker\Schedule.Maker.csproj", "{5F0C1449-7F4D-4607-9D42-4ED4B4992ED1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedule.Maker.Models", "Schedule.Maker.Models\Schedule.Maker.Models.csproj", "{6E0DBC4C-5DB9-48F4-A228-98FC22BAC018}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5F0C1449-7F4D-4607-9D42-4ED4B4992ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F0C1449-7F4D-4607-9D42-4ED4B4992ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F0C1449-7F4D-4607-9D42-4ED4B4992ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E0DBC4C-5DB9-48F4-A228-98FC22BAC018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E0DBC4C-5DB9-48F4-A228-98FC22BAC018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E0DBC4C-5DB9-48F4-A228-98FC22BAC018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E0DBC4C-5DB9-48F4-A228-98FC22BAC018}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
