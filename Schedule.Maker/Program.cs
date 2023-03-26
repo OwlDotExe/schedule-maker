@@ -1,5 +1,6 @@
 ﻿using Schedule.Maker.Models.Entity;
 using Schedule.Maker.Models.Helper.Terminal;
+using Schedule.Maker.Models.Helper.TreeStructure;
 using System.Globalization;
 
 namespace Schedule.Maker
@@ -27,6 +28,23 @@ namespace Schedule.Maker
             List<DateTime> days_off = TerminalHelper.Ask_Days_Off(days_in_month, month, month_number);
 
             User user = new User(first_name, last_name, days_off);
+
+
+            // ***** Tree structure establishment ***** //
+
+            string base_directory_path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\schedule-maker-files";
+
+            if (!TreeStructureHelper.Find_Directory(base_directory_path))
+                Directory.CreateDirectory(base_directory_path);
+
+            string excel_name = $"{month_number}.{month}_{DateTime.Now.Year}.xlsx";
+            string pdf_name = $"{month_number}.{month}_{DateTime.Now.Year}.pdf";
+
+            if (TreeStructureHelper.Find_File($"{base_directory_path}\\{excel_name}"))
+                File.Delete($"{base_directory_path}\\{excel_name}");
+
+            if (TreeStructureHelper.Find_File($"{base_directory_path}\\{pdf_name}"))
+                File.Delete($"{base_directory_path}\\{pdf_name}");
 
             Console.ReadKey();
         }
