@@ -1,4 +1,5 @@
-﻿using Spectre.Console;
+﻿using Schedule.Maker.Models.Entity;
+using Spectre.Console;
 
 namespace Schedule.Maker.Models.Helper.Terminal
 {
@@ -35,11 +36,35 @@ namespace Schedule.Maker.Models.Helper.Terminal
             AnsiConsole.MarkupLine($"{ansi_accentuated}For the great generation of the {ansi_highlight_color}Excel & PDF files{ansi_end_style} this program will ask you some information :[/]");
             AnsiConsole.MarkupLine($"    {ansi_attenuated}1~{ansi_end_style} {ansi_accentuated}Your {ansi_highlight_color}first name{ansi_end_style} and {ansi_highlight_color}last name{ansi_end_style}.{ansi_end_style}");
             AnsiConsole.MarkupLine($"    {ansi_attenuated}2~{ansi_end_style} {ansi_accentuated}The {ansi_highlight_color}month{ansi_end_style} used for the generation.{ansi_end_style}");
-            AnsiConsole.MarkupLine($"    {ansi_attenuated}3~{ansi_end_style} {ansi_accentuated}Potential {ansi_highlight_color}days off{ansi_end_style} taken during the month.{ansi_end_style}\n");
+            AnsiConsole.MarkupLine($"    {ansi_attenuated}3~{ansi_end_style} {ansi_accentuated}Potential {ansi_highlight_color}days off{ansi_end_style} taken during the month.{ansi_end_style}");
+            AnsiConsole.MarkupLine($"    {ansi_attenuated}4~{ansi_end_style} {ansi_accentuated}Final {ansi_highlight_color}summary{ansi_end_style} that contains all the {ansi_highlight_color}user information{ansi_end_style}.{ansi_end_style}\n");
+
 
             AnsiConsole.MarkupLine($"{ansi_attenuated}(Press ENTER if you want to continue){ansi_end_style}");
 
             Wait_For_Key(ConsoleKey.Enter);
+        }
+
+        /**
+         * <summary>
+         *  Function used to write the final summary of all the user information.
+         * </summary>
+         * <param>user - The user object which contains all the information entered by the user.</param>
+         * <param>excel_name - The displayed excel name in the tree structure (with styling).</param>
+         * <param>pdf_name - The displayed pdf name in the tree structure (with styling).</param>
+         * <return>Boolean value which indicates if the user has confirmed or not the summary of his own information.</return>
+         */
+        public static bool Write_User_Summary(User user, string excel_name, string pdf_name)
+        {
+            Write_Step($"{ansi_attenuated}4~{ansi_end_style} {ansi_accentuated}[underline]Summary of user information.{ansi_end_style}{ansi_end_style}\n");
+
+            Write_User_Info(user);
+
+            AnsiConsole.MarkupLine($"{ansi_attenuated}~~>{ansi_end_style} {ansi_accentuated}Preview of the {ansi_highlight_color}tree structure{ansi_end_style} that will be generated:{ansi_end_style}\n");
+
+            Write_Tree_Structure(excel_name, pdf_name);
+
+            return !Wait_For_User_Agreement(ConsoleKey.Enter, "Press any other key if you want enter new information");
         }
 
         /**
@@ -207,6 +232,45 @@ namespace Schedule.Maker.Models.Helper.Terminal
             Console.Clear();
 
             AnsiConsole.MarkupLine(step_sentence);
+        }
+
+        /**
+         * <summary>
+         *  Function used to write the tree structure that will be generated.
+         * </summary>
+         * <param>excel_name - The final name of the excel file that will be generated.</param>
+         * <param>pdf_name - The final name of the pdf file that will be generated.</param>
+         */
+        private static void Write_Tree_Structure(string excel_name, string pdf_name)
+        {
+            Tree root = new Tree($"{ansi_accentuated}Desktop{ansi_end_style}");
+
+            TreeNode main_directory_node = root.AddNode($"{ansi_accentuated}[orange1]shedule-maker-files{ansi_end_style}{ansi_end_style} [bold dim](directory)[/]");
+
+            main_directory_node.AddNode($"{excel_name} [bold dim](file)[/]");
+            main_directory_node.AddNode($"{pdf_name} [bold dim](file)[/]");
+
+            AnsiConsole.Write(root);
+            AnsiConsole.Markup("\n");
+        }
+
+        /**
+         * <summary>
+         *  Function used to write user information.
+         * </summary>
+         * <param>user - The user object that contains all the data.</param>
+         */
+        private static void Write_User_Info(User user)
+        {
+            AnsiConsole.MarkupLine($"{ansi_attenuated}~~>{ansi_end_style} {ansi_accentuated}Full name that will be used for the generation: {ansi_highlight_color}{user.first_name} {user.last_name}{ansi_end_style}{ansi_end_style}");
+            AnsiConsole.MarkupLine($"{ansi_attenuated}~~>{ansi_end_style} {ansi_accentuated}Month that will be used for the generation: {ansi_highlight_color}{user.month}{ansi_end_style}{ansi_end_style}");
+            AnsiConsole.MarkupLine($"{ansi_attenuated}~~>{ansi_end_style} {ansi_accentuated}Potential {ansi_highlight_color}days off{ansi_end_style} taken during the month:{ansi_end_style}\n");
+
+            Show_Calendar(user.days_off, user.month_number);
+
+            AnsiConsole.Markup($"\n{ansi_accentuated}(days off = {ansi_highlight_color}*{ansi_end_style}){ansi_end_style}\n");
+
+            AnsiConsole.Markup("\n");
         }
 
         /**
