@@ -7,8 +7,9 @@
     {
         /**
          * <summary>
-         *  Fuction used to find a given directory using directory's path.
+         *  Fuction used to find a given directory using path.
          * </summary>
+         * <param name="directory_path">The directory path to check.</param>
          * <return>Boolean value that indicates the potential existence of the directory.</return>
          */
         public static bool Find_Directory(string directory_path)
@@ -20,8 +21,9 @@
 
         /**
          * <summary>
-         *  Function used to find a given file using file's path.
+         *  Function used to find a given file using path.
          * </summary>
+         * <param name="file_path">The file path to check.</param>
          * <return>Boolean value that indicates the potential existence of the file.</return>*
          */
         public static bool Find_File(string file_path)

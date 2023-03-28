@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IronXL.Excel" Version="2023.4.13" />
     <PackageReference Include="Spectre.Console" Version="0.46.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Schedule.Maker.Enums\Schedule.Maker.Enums.csproj" />
   </ItemGroup>
 
 </Project>
