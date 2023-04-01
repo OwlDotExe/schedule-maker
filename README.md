@@ -46,4 +46,6 @@ You can check out each library's documentation for more details : [IronXL docume
 git clone https://github.com/takoune/Schedule.Maker
 ```
 
-2. You can open the SLN and launch the console application or you can go to this folder Schedule.Maker\Schedule.Maker\bin\Debug\net6.0 and launche the .exe file
+2. You can open the SLN and launch the console application or you can go to this folder Schedule.Maker\Schedule.Maker\bin\Debug\net6.0 and launch the .exe file
+
+3. Finally you can find your generated file in the current folder : Desktop\schedule-maker-files\name.xlsx

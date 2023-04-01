@@ -22,7 +22,7 @@ namespace Schedule.Maker.Models.Helper.Terminal
         public static void Write_Program_Information()
         {
             AnsiConsole.MarkupLine($"{ansi_accentuated}AUTHOR:{ansi_end_style} {ansi_attenuated}Takoune{ansi_end_style}");
-            AnsiConsole.MarkupLine($"{ansi_accentuated}DESCRIPTION:{ansi_end_style} {ansi_attenuated}Automation project to generate Excel & PDF files that contain working hour for a given month.{ansi_end_style}");
+            AnsiConsole.MarkupLine($"{ansi_accentuated}DESCRIPTION:{ansi_end_style} {ansi_attenuated}Automation project to generate Excel file that contains working hours for a given month.{ansi_end_style}");
             AnsiConsole.MarkupLine($"{ansi_accentuated}VERSION:{ansi_end_style} {ansi_attenuated}1.0{ansi_end_style}");
             AnsiConsole.MarkupLine($"{ansi_accentuated}GITHUB PROFIL:{ansi_end_style} {ansi_attenuated}[link]https://github.com/takoune{ansi_end_style}{ansi_end_style}\n");
         }
@@ -34,7 +34,7 @@ namespace Schedule.Maker.Models.Helper.Terminal
          */
         public static void Write_User_Instructions()
         {
-            AnsiConsole.MarkupLine($"{ansi_accentuated}For the great generation of the {ansi_highlight_color}Excel & PDF files{ansi_end_style} this program will ask you some information :[/]");
+            AnsiConsole.MarkupLine($"{ansi_accentuated}For the great generation of the {ansi_highlight_color}Excel file{ansi_end_style} this program will ask you some information :[/]");
             AnsiConsole.MarkupLine($"    {ansi_attenuated}1~{ansi_end_style} {ansi_accentuated}Your {ansi_highlight_color}first name{ansi_end_style} and {ansi_highlight_color}last name{ansi_end_style}.{ansi_end_style}");
             AnsiConsole.MarkupLine($"    {ansi_attenuated}2~{ansi_end_style} {ansi_accentuated}The {ansi_highlight_color}month{ansi_end_style} used for the generation.{ansi_end_style}");
             AnsiConsole.MarkupLine($"    {ansi_attenuated}3~{ansi_end_style} {ansi_accentuated}{ansi_highlight_color}Days off{ansi_end_style} / {ansi_highlight_color}public days{ansi_end_style} / {ansi_highlight_color}remote days{ansi_end_style}.{ansi_end_style}");
@@ -64,7 +64,7 @@ namespace Schedule.Maker.Models.Helper.Terminal
 
             Write_Tree_Structure(excel_name);
 
-            return !Wait_For_User_Agreement(ConsoleKey.Enter, "Press any other key if you want enter new information");
+            return !Wait_For_User_Agreement(ConsoleKey.Enter, "Press any other key if you want to enter new information");
         }
 
         /**
